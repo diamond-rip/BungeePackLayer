@@ -20,7 +20,7 @@ import org.slf4j.Logger;
         name = "Bungee Pack Layer",
         version = "${version}",
         description = "${description}",
-        authors = {"th0rgal"},
+        authors = {"th0rgal", "GoodestEnglish"},
         dependencies = {
                 @Dependency(id = "protocolize")
         }
@@ -41,7 +41,7 @@ public class BungeePackLayerVelocityPlugin {
     @Subscribe
     public void onProxyInitialization(ProxyInitializeEvent event) {
         INSTANCE = this;
-        this.resourcePackRequestListener = new ResourcePackRequestListener();
+        this.resourcePackRequestListener = new ResourcePackRequestListener(this);
         Protocolize.listenerProvider().registerListener(resourcePackRequestListener);
         this.proxyServer.getEventManager().register(this, new DisconnectListener());
     }
